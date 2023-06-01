@@ -1,4 +1,3 @@
-// import { Component } from 'react';
 import { Formik } from 'formik';
 import { ImSearch } from 'react-icons/im';
 import { SearchForm, Input, SearchFormBtn } from './Searchbar.styled';
@@ -21,7 +20,6 @@ export const Searchbar = ({ onSubmit }) => {
           autoComplete="off"
           autoFocus
           placeholder="Search images and photos"
-          // value={this.state.value}
           name="query"
         />
       </SearchForm>

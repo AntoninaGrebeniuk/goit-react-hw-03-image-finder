@@ -14,9 +14,8 @@ export const getImages = async (query, page) => {
     per_page: 12,
   });
 
-  const response = await axios.get(
-    // `?q=${query}&page=1&key=${API_KEY}&image_type=photo&orientation=horizontal&per_page=12`
-    `?${paramsString}`
-  );
+  const response = await axios.get(`?${paramsString}`);
+  // if (response.ok) {
   return response.data;
+  // }
 };
