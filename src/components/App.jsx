@@ -29,6 +29,18 @@ export class App extends Component {
     if (prevState.page !== page || prevState.query !== query) {
       this.setState({ isLoading: STATUS.PENDING });
 
+      // если пустая строка, выводим сообщение
+      if (query === '') {
+        toast.info(
+          "Sorry, the search string can't be empty. Please try again.",
+          {
+            theme: 'colored',
+          }
+        );
+        this.setState({ isLoading: STATUS.RESOLVED });
+        return;
+      }
+
       try {
         const { hits, totalHits } = await getImages(query, page);
         const perPage = hits.length; // кол-во элементов на странице
@@ -57,13 +69,6 @@ export class App extends Component {
   };
 
   handleSearch = ({ query }) => {
-    // если пустая строка, выводим сообщение
-    if (query === '') {
-      toast.info("Sorry, the search string can't be empty. Please try again.", {
-        theme: 'colored',
-      });
-      return;
-    }
     this.setState({ query, page: 1, images: [] }); // При сабмите скидываем страницу и очищаем массив
   };
 
