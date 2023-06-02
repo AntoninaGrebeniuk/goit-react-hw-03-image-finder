@@ -62,6 +62,7 @@ export class App extends Component {
       toast.info("Sorry, the search string can't be empty. Please try again.", {
         theme: 'colored',
       });
+      return;
     }
     this.setState({ query, page: 1, images: [] }); // При сабмите скидываем страницу и очищаем массив
   };
