@@ -9,6 +9,7 @@ export const Spinner = styled.div`
   height: 84px;
   border-radius: 50%;
   perspective: 800px;
+  z-index: 50;
 `;
 
 export const rotateOne = keyframes`
@@ -45,7 +46,7 @@ export const InnerOne = styled.div`
   left: 0%;
   top: 0%;
   animation: ${rotateOne} 1s linear infinite;
-  border-bottom: 4px solid #853ce4;
+  border-bottom: 4px solid ${p => p.theme.colors.violet};
 `;
 
 export const InnerTwo = styled.div`
@@ -57,7 +58,7 @@ export const InnerTwo = styled.div`
   right: 0%;
   top: 0%;
   animation: ${rotateTwo} 1s linear infinite;
-  border-right: 4px solid #11b3db;
+  border-right: 4px solid ${p => p.theme.colors.lightBlue};
 `;
 
 export const InnerThree = styled.div`
@@ -69,5 +70,5 @@ export const InnerThree = styled.div`
   right: 0%;
   bottom: 0%;
   animation: ${rotateThree} 1s linear infinite;
-  border-top: 4px solid #e030e0;
+  border-top: 4px solid ${p => p.theme.colors.pink};
 `;

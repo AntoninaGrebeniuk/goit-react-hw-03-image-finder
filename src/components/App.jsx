@@ -44,11 +44,17 @@ export class App extends Component {
 
         this.setState({ isLoading: STATUS.RESOLVED });
       } catch (error) {
-        toast.error(`Something went wrong!`); //  ${error}
+        // toast.error(`Something went wrong!`); //  ${error}
+        this.errorMessage();
+
         this.setState({ isLoading: STATUS.REJECTED });
       }
     }
   }
+
+  errorMessage = () => {
+    toast.error(`Something went wrong!`);
+  };
 
   handleSearch = ({ query }) => {
     // если пустая строка, выводим сообщение
@@ -68,20 +74,25 @@ export class App extends Component {
 
   render() {
     const { images, isLoading, totalHits, page } = this.state;
-    const showLoadMoreBtn = totalHits > page;
+    const showLoadMoreBtn = images.length !== 0 && totalHits > page;
 
     return (
       <div>
         <Searchbar onSubmit={this.handleSearch} />
+
         {isLoading === STATUS.PENDING && <Loader />}
-        {isLoading === STATUS.RESOLVED && <ImageGallery images={images} />}
-        {/* {isLoading === STATUS.REJECTED && ERROR} */}
+
+        <ImageGallery images={images} />
+
+        {/* {isLoading === STATUS.REJECTED && this.errorMessage} */}
 
         {showLoadMoreBtn && (
           <Button
             loadMore={this.handleLoadMore}
             disabled={isLoading === STATUS.PENDING ? true : false}
-          />
+          >
+            {isLoading === STATUS.PENDING ? 'Loading...' : 'Load more'}
+          </Button>
         )}
 
         <ToastContainer autoClose={3000} theme="colored" />

@@ -22,16 +22,16 @@ export const LoadMore = styled.button`
     rgba(255, 255, 255, 0.25)
   );
 
-  background-color: #1bdfdf;
+  background-color: ${p => p.theme.colors.lightBlue};
   border: none;
   border-radius: 30px;
   cursor: pointer;
 
   box-shadow: -2px -2px 5px 0 #f1fafa, 3px 3px 7px 0 rgba(0, 0, 0, 0.25);
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color ${p => p.theme.cubic.cubicBezier},
+    box-shadow ${p => p.theme.cubic.cubicBezier};
 
   &:hover {
-    box-shadow: inset 2px 2px 3px #778580, inset -3px -3px 7px #89e6e6;
+    box-shadow: ${p => p.theme.shadow.btnHover};
   }
 `;

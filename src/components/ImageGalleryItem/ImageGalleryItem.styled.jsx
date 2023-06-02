@@ -6,17 +6,17 @@ export const GalleryItem = styled.li`
   flex-basis: calc((100% - 90px) / 4);
   background-color: rgb(248, 248, 248);
 
-  border: 3px solid #ffffff;
+  border: 3px solid ${p => p.theme.colors.white};
   border-radius: 5px;
   transform: scale(1);
   cursor: zoom-in;
-  box-shadow: 0px 5px 15px 2px #757575;
-  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: ${p => p.theme.shadow.itemShadow};
+  transition: box-shadow ${p => p.theme.cubic.cubicBezier},
+    transform ${p => p.theme.cubic.cubicBezier};
 
   &:hover {
     transform: scale(1.05);
-    box-shadow: 0px 5px 15px 2px #3d3d3d;
+    box-shadow: ${p => p.theme.shadow.itemHoverShadow};
   }
 `;
 

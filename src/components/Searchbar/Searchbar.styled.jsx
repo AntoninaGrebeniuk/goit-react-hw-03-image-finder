@@ -13,8 +13,8 @@ export const SearchForm = styled(Form)`
   align-items: center;
   padding: 8px;
   margin-bottom: 24px;
-  background-color: #1bdfdfee;
-  box-shadow: 2px 2px 3px #778580, -3px -3px 7px #fff;
+  background-color: ${p => p.theme.colors.searchBackground};
+  box-shadow: ${p => p.theme.shadow.searchShadow};
 `;
 
 export const Input = styled(Field)`
@@ -27,18 +27,17 @@ export const Input = styled(Field)`
   outline: none;
   border-radius: 30px;
   transform: scale(1);
-  box-shadow: inset 2px 2px 3px #778580, inset -3px -3px 7px #fff;
+  box-shadow: ${p => p.theme.shadow.insetShadow};
 
-  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    width 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: box-shadow ${p => p.theme.cubic.cubicBezier},
+    transform ${p => p.theme.cubic.cubicBezier};
 
   &:focus {
     border: none;
     outline: none;
 
     transform: scale(1.02);
-    box-shadow: inset 1px 1px 2px #778580, inset -1px -1px 2px #fff;
+    box-shadow: ${p => p.theme.shadow.insetHoverShadow};
   }
 `;
 
@@ -70,20 +69,19 @@ export const SearchFormBtn = styled.button`
   border-radius: 30px;
   cursor: pointer;
 
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color ${p => p.theme.cubic.cubicBezier},
+    box-shadow ${p => p.theme.cubic.cubicBezier};
   color: #615e5e;
 
   &:hover {
-    color: #1bdfdf;
-    /* background-color: #7cfafa; */
+    color: ${p => p.theme.colors.lightBlue};
   }
 `;
 
 export const SearchIcon = styled(ImSearch)`
   transform: scale(1);
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform ${p => p.theme.cubic.cubicBezier},
+    fill ${p => p.theme.cubic.cubicBezier};
 
   &:hover {
     transform: scale(1.2);

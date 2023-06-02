@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 import { LoadMore } from './Button.styled';
 
-export function Button({ loadMore }) {
+export function Button({ loadMore, children }) {
   return (
     <LoadMore type="button" onClick={loadMore}>
-      Load more
+      {children}
+      {/* Load more */}
     </LoadMore>
   );
 }
