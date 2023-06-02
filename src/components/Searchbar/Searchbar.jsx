@@ -1,7 +1,12 @@
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
-import { ImSearch } from 'react-icons/im';
-import { SearchForm, Input, SearchFormBtn } from './Searchbar.styled';
+// import { ImSearch } from 'react-icons/im';
+import {
+  SearchForm,
+  Input,
+  SearchFormBtn,
+  SearchIcon,
+} from './Searchbar.styled';
 import * as yup from 'yup';
 
 const schema = yup.object().shape({
@@ -22,7 +27,7 @@ export const Searchbar = ({ onSubmit }) => {
     >
       <SearchForm>
         <SearchFormBtn type="submit">
-          <ImSearch />
+          <SearchIcon />
         </SearchFormBtn>
 
         <Input

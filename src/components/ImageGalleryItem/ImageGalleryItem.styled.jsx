@@ -5,6 +5,8 @@ export const GalleryItem = styled.li`
   overflow: hidden;
   flex-basis: calc((100% - 90px) / 4);
   background-color: rgb(248, 248, 248);
+
+  border: 3px solid #ffffff;
   border-radius: 5px;
   transform: scale(1);
   cursor: zoom-in;

@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { Form, Field } from 'formik';
+import { ImSearch } from 'react-icons/im';
 
 export const SearchForm = styled(Form)`
   position: fixed;
@@ -33,7 +34,6 @@ export const Input = styled(Field)`
     width 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:focus {
-    width: 350px;
     border: none;
     outline: none;
 
@@ -45,7 +45,7 @@ export const Input = styled(Field)`
 export const SearchFormBtn = styled.button`
   position: absolute;
   top: 50%;
-  right: 55.5%;
+  right: 55.4%;
   transform: translate(-50%, -50%);
   z-index: 10;
 
@@ -69,13 +69,24 @@ export const SearchFormBtn = styled.button`
   outline: none;
   border-radius: 30px;
   cursor: pointer;
-  /* box-shadow: -3px -3px 7px 0 #7cfafa, 3px 3px 7px 0 rgba(0, 0, 0, 0.25); */
 
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    // border 250ms cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  color: #615e5e;
 
   &:hover {
-    /* box-shadow: inset 2px 2px 3px #778580, inset -3px -3px 7px #7cfafa; */
+    color: #1bdfdf;
+    /* background-color: #7cfafa; */
+  }
+`;
+
+export const SearchIcon = styled(ImSearch)`
+  transform: scale(1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    transform: scale(1.2);
+    fill: currentColor;
   }
 `;

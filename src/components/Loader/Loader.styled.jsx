@@ -11,14 +11,6 @@ export const Spinner = styled.div`
   perspective: 800px;
 `;
 
-// const Inner = styled.div`
-//   position: absolute;
-//   box-sizing: border-box;
-//   width: 100%;
-//   height: 100%;
-//   border-radius: 50%;
-// `;
-
 export const rotateOne = keyframes`
   0% {
     transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
@@ -45,7 +37,6 @@ export const rotateThree = keyframes`
   }`;
 
 export const InnerOne = styled.div`
-  /* composes: Inner; */
   position: absolute;
   box-sizing: border-box;
   width: 100%;
@@ -58,7 +49,6 @@ export const InnerOne = styled.div`
 `;
 
 export const InnerTwo = styled.div`
-  /* composes: Inner; */
   position: absolute;
   box-sizing: border-box;
   width: 100%;
@@ -71,7 +61,6 @@ export const InnerTwo = styled.div`
 `;
 
 export const InnerThree = styled.div`
-  /* composes: Inner; */
   position: absolute;
   box-sizing: border-box;
   width: 100%;

@@ -6,7 +6,6 @@ import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Loader } from './Loader/Loader';
 import { Button } from './Button/Button';
 import { getImages } from './services/api';
-// import { Modal } from './Modal/Modal';
 
 const STATUS = {
   IDLE: 'idle',
@@ -52,9 +51,9 @@ export class App extends Component {
   }
 
   handleSearch = ({ query }) => {
+    // если пустая строка, выводим сообщение
     if (query === '') {
       toast.info("Sorry, the search string can't be empty. Please try again.", {
-        // если пустая строка, выводим сообщение
         theme: 'colored',
       });
     }

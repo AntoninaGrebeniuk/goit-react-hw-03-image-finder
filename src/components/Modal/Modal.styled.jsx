@@ -18,8 +18,7 @@ export const ModalBox = styled.div`
   width: 80vw;
   height: 80vh;
 
-  /* background-color: transparent; */
-
+  /* border: 3px solid #ffffff; */
   border-radius: 10px;
   overflow: hidden;
 `;
