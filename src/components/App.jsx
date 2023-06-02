@@ -6,6 +6,7 @@ import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Loader } from './Loader/Loader';
 import { Button } from './Button/Button';
 import { getImages } from './services/api';
+// import { Modal } from './Modal/Modal';
 
 const STATUS = {
   IDLE: 'idle',
@@ -26,10 +27,6 @@ export class App extends Component {
   async componentDidUpdate(_, prevState) {
     const { query, page } = this.state;
 
-    // if (prevState.query !== query) {
-    //   await this.setState({ images: [] });
-    // }
-
     if (prevState.page !== page || prevState.query !== query) {
       this.setState({ isLoading: STATUS.PENDING });
 
@@ -43,21 +40,25 @@ export class App extends Component {
         }));
 
         if (totalHits === 0) {
-          toast.warn('Nothing was found for your request');
+          toast.warn('Nothing was found for your request. Please try again.');
         }
 
         this.setState({ isLoading: STATUS.RESOLVED });
       } catch (error) {
-        toast.error(`Oops! Something went wrong! ${error}`);
+        toast.error(`Something went wrong!`); //  ${error}
         this.setState({ isLoading: STATUS.REJECTED });
       }
     }
   }
 
   handleSearch = ({ query }) => {
-    // if (this.state.query === query.trim()) {
-    this.setState({ query, page: 1, images: [] }); // При сабмите скидываю страницу и очищаю массив
-    // }
+    if (query === '') {
+      toast.info("Sorry, the search string can't be empty. Please try again.", {
+        // если пустая строка, выводим сообщение
+        theme: 'colored',
+      });
+    }
+    this.setState({ query, page: 1, images: [] }); // При сабмите скидываем страницу и очищаем массив
   };
 
   handleLoadMore = () => {
@@ -68,7 +69,6 @@ export class App extends Component {
 
   render() {
     const { images, isLoading, totalHits, page } = this.state;
-    // const showLoadMoreBtn = totalHits !== 0 || totalHits > page;
     const showLoadMoreBtn = totalHits > page;
 
     return (
@@ -85,11 +85,7 @@ export class App extends Component {
           />
         )}
 
-        <ToastContainer
-          position="top-center"
-          autoClose={2000}
-          theme="colored"
-        />
+        <ToastContainer autoClose={3000} theme="colored" />
       </div>
     );
   }

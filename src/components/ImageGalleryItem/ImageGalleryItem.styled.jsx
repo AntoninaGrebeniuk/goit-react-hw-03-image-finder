@@ -7,6 +7,7 @@ export const GalleryItem = styled.li`
   background-color: rgb(248, 248, 248);
   border-radius: 5px;
   transform: scale(1);
+  cursor: zoom-in;
   box-shadow: 0px 5px 15px 2px #757575;
   transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
     transform 250ms cubic-bezier(0.4, 0, 0.2, 1);

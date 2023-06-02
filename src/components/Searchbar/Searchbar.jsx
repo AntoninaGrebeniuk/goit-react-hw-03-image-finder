@@ -1,6 +1,12 @@
 import { Formik } from 'formik';
+import PropTypes from 'prop-types';
 import { ImSearch } from 'react-icons/im';
 import { SearchForm, Input, SearchFormBtn } from './Searchbar.styled';
+import * as yup from 'yup';
+
+const schema = yup.object().shape({
+  query: yup.string().trim(),
+});
 
 export const Searchbar = ({ onSubmit }) => {
   const handleSubmit = (values, actions) => {
@@ -9,7 +15,11 @@ export const Searchbar = ({ onSubmit }) => {
   };
 
   return (
-    <Formik initialValues={{ query: '' }} onSubmit={handleSubmit}>
+    <Formik
+      initialValues={{ query: '' }}
+      validationSchema={schema}
+      onSubmit={handleSubmit}
+    >
       <SearchForm>
         <SearchFormBtn type="submit">
           <ImSearch />
@@ -66,3 +76,7 @@ export const Searchbar = ({ onSubmit }) => {
 //     );
 //   }
 // }
+
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
