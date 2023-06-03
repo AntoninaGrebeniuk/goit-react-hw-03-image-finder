@@ -35,6 +35,7 @@ export class App extends Component {
 
         if (totalHits === 0) {
           toast.warn('Nothing was found for your request. Please try again.');
+          this.setState({ isLoading: STATUS.RESOLVED });
           return;
         }
 
