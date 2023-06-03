@@ -29,10 +29,10 @@ export class Modal extends Component {
   };
 
   render() {
-    const { closeModal, tags, modalImg } = this.props;
+    const { tags, modalImg } = this.props;
 
     return createPortal(
-      <Overlay onClick={closeModal}>
+      <Overlay onClick={this.closeByBackdrop}>
         <ModalBox>
           <ModalImg src={modalImg} loading="lazy" alt={tags} />
         </ModalBox>

@@ -29,34 +29,22 @@ export class App extends Component {
     if (prevState.page !== page || prevState.query !== query) {
       this.setState({ isLoading: STATUS.PENDING });
 
-      // если пустая строка, выводим сообщение
-      if (query === '') {
-        toast.info(
-          "Sorry, the search string can't be empty. Please try again.",
-          {
-            theme: 'colored',
-          }
-        );
-        this.setState({ isLoading: STATUS.RESOLVED });
-        return;
-      }
-
       try {
         const { hits, totalHits } = await getImages(query, page);
         const perPage = hits.length; // кол-во элементов на странице
 
-        await this.setState(prevState => ({
+        if (totalHits === 0) {
+          toast.warn('Nothing was found for your request. Please try again.');
+          return;
+        }
+
+        this.setState(prevState => ({
           images: [...prevState.images, ...hits],
           totalHits: Math.ceil(totalHits / perPage),
         }));
 
-        if (totalHits === 0) {
-          toast.warn('Nothing was found for your request. Please try again.');
-        }
-
         this.setState({ isLoading: STATUS.RESOLVED });
       } catch (error) {
-        // toast.error(`Something went wrong!`); //  ${error}
         this.errorMessage();
 
         this.setState({ isLoading: STATUS.REJECTED });
@@ -69,7 +57,7 @@ export class App extends Component {
   };
 
   handleSearch = ({ query }) => {
-    this.setState({ query, page: 1, images: [] }); // При сабмите скидываем страницу и очищаем массив
+    this.setState({ query, page: 1, images: [] });
   };
 
   handleLoadMore = () => {
@@ -89,8 +77,6 @@ export class App extends Component {
         {isLoading === STATUS.PENDING && <Loader />}
 
         <ImageGallery images={images} />
-
-        {/* {isLoading === STATUS.REJECTED && this.errorMessage} */}
 
         {showLoadMoreBtn && (
           <Button

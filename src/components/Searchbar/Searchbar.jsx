@@ -1,6 +1,7 @@
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
-// import { ImSearch } from 'react-icons/im';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
   SearchForm,
   Input,
@@ -15,6 +16,12 @@ const schema = yup.object().shape({
 
 export const Searchbar = ({ onSubmit }) => {
   const handleSubmit = (values, actions) => {
+    // если пустая строка, выводим сообщение
+    if (values.query === '') {
+      toast.info("Sorry, the search string can't be empty. Please try again.");
+      return;
+    }
+
     onSubmit(values);
     actions.resetForm();
   };
