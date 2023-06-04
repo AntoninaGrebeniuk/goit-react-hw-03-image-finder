@@ -5,7 +5,7 @@ import { Searchbar } from './Searchbar/Searchbar';
 import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Loader } from './Loader/Loader';
 import { Button } from './Button/Button';
-import { getImages } from './services/api';
+import { getImages } from '../services/api';
 
 const STATUS = {
   IDLE: 'idle',
@@ -31,7 +31,6 @@ export class App extends Component {
 
       try {
         const { hits, totalHits } = await getImages(query, page);
-        const perPage = hits.length; // кол-во элементов на странице
 
         if (totalHits === 0) {
           toast.warn('Nothing was found for your request. Please try again.');
@@ -41,7 +40,7 @@ export class App extends Component {
 
         this.setState(prevState => ({
           images: [...prevState.images, ...hits],
-          totalHits: Math.ceil(totalHits / perPage),
+          totalHits: Math.ceil(totalHits / 12),
         }));
 
         this.setState({ isLoading: STATUS.RESOLVED });
@@ -69,7 +68,7 @@ export class App extends Component {
 
   render() {
     const { images, isLoading, totalHits, page } = this.state;
-    const showLoadMoreBtn = images.length !== 0 && totalHits > page;
+    const showLoadMoreBtn = totalHits > page;
 
     return (
       <div>

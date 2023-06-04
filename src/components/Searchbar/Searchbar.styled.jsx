@@ -43,9 +43,8 @@ export const Input = styled(Field)`
 
 export const SearchFormBtn = styled.button`
   position: absolute;
-  top: 50%;
-  right: 55.4%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
   z-index: 10;
 
   display: flex;
@@ -87,4 +86,8 @@ export const SearchIcon = styled(ImSearch)`
     transform: scale(1.2);
     fill: currentColor;
   }
+`;
+
+export const Wrapper = styled.div`
+  position: relative;
 `;

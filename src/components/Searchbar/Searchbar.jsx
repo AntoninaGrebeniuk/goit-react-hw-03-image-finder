@@ -7,6 +7,7 @@ import {
   Input,
   SearchFormBtn,
   SearchIcon,
+  Wrapper,
 } from './Searchbar.styled';
 import * as yup from 'yup';
 
@@ -33,17 +34,19 @@ export const Searchbar = ({ onSubmit }) => {
       onSubmit={handleSubmit}
     >
       <SearchForm>
-        <SearchFormBtn type="submit">
-          <SearchIcon />
-        </SearchFormBtn>
+        <Wrapper>
+          <SearchFormBtn type="submit">
+            <SearchIcon />
+          </SearchFormBtn>
 
-        <Input
-          type="text"
-          autoComplete="off"
-          autoFocus
-          placeholder="Search images and photos"
-          name="query"
-        />
+          <Input
+            type="text"
+            autoComplete="off"
+            autoFocus
+            placeholder="Search images and photos"
+            name="query"
+          />
+        </Wrapper>
       </SearchForm>
     </Formik>
   );
